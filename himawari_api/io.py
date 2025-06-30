@@ -155,9 +155,12 @@ def _get_product_dir(satellite, product_level, product, sector, protocol=None, b
     return product_dir
 
 
-def get_fname_glob_pattern(product_level): 
+def get_fname_glob_pattern(product_level, only_nsw): 
     if product_level == "L1b": 
-        fname_pattern = "*.bz2*"
+        if only_nsw : 
+            fname_pattern = "*S0[89]*.bz2*"
+        else : 
+            fname_pattern = "*.bz2*"
     else: # L2 
         fname_pattern = "*.nc*"
     return fname_pattern 

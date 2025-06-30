@@ -90,6 +90,7 @@ def find_files(
     protocol=None,
     fs_args={},
     verbose=False,
+    only_nsw=False,
 ):
     """
     Retrieve files from local or cloud bucket storage.
@@ -199,8 +200,9 @@ def find_files(
     list_time_dir_tree = ["/".join(_dt_to_year_month_day_hhmm(dt)) for dt in list_timesteps]
 
     # Define glob patterns 
-    fname_glob_pattern = get_fname_glob_pattern(product_level=product_level)
+    fname_glob_pattern = get_fname_glob_pattern(product_level=product_level, only_nsw=only_nsw)
     list_glob_pattern = [os.path.join(product_dir, time_dir_tree, fname_glob_pattern) for time_dir_tree in list_time_dir_tree]
+    
     n_directories = len(list_glob_pattern)
     if verbose:
         print(f"Searching files across {n_directories} directories.")

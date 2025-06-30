@@ -228,6 +228,7 @@ def download_files(
     verbose=True,
     filter_parameters={},
     fs_args={},
+    only_nsw=False,
 ):
     """
     Download files from a cloud bucket storage.
@@ -323,6 +324,7 @@ def download_files(
             base_dir=None,
             group_by_key=None,
             verbose=False,
+            only_nsw=only_nsw,
         )
         # Check there are files to retrieve
         n_files = len(bucket_fpaths)
