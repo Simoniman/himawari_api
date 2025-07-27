@@ -102,7 +102,7 @@ def _check_download_protocol(protocol):
 def _select_missing_fpaths(local_fpaths, bucket_fpaths):
     """Return local and bucket filepaths of files not present on the local storage."""
     # Keep only non-existing local files
-    idx_not_exist = [not os.path.exists(filepath) for filepath in local_fpaths]
+    idx_not_exist = [not (os.path.exists(filepath) or os.path.exists(os.path.splitext(filepath)[0])) for filepath in local_fpaths]
     local_fpaths = list(np.array(local_fpaths)[idx_not_exist])
     bucket_fpaths = list(np.array(bucket_fpaths)[idx_not_exist])
     return local_fpaths, bucket_fpaths
