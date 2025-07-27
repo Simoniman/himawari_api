@@ -307,6 +307,7 @@ def download_files(
     # Loop over daily time blocks (to search for data)
     list_all_local_fpaths = []
     list_all_bucket_fpaths = []
+    local_fpaths_all = []
     n_downloaded_files = 0
     for start_time, end_time in time_blocks:
         # Retrieve bucket fpaths
