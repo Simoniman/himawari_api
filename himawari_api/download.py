@@ -345,6 +345,8 @@ def download_files(
             local_fpaths=local_fpaths, bucket_fpaths=bucket_fpaths, fs=fs
         )
 
+        local_fpaths_all = local_fpaths # we use another reference to all local file paths weather it is gonna be downloaded or not
+
         # Optionally exclude files that already exist on disk
         if not force_download:
             local_fpaths, bucket_fpaths = _select_missing_fpaths(
@@ -415,7 +417,7 @@ def download_files(
         
 
     # Return list of local fpaths
-    return list_all_local_fpaths
+    return local_fpaths_all 
 
 
 def download_closest_files(
